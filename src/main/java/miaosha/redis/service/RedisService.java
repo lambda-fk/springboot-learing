@@ -14,19 +14,19 @@ public interface RedisService {
 	 * @return
 	 * @throws Exception 
 	 */
-	<T> T getBean(String key , Class<T> claz) throws Exception ;
+	<T> T getBean(String key, Class<T> claz) throws Exception ;
 	/**
 	 * 将bean写进redis
 	 * @param key
 	 * @param bean
 	 * @throws Exception 
 	 */
-	<T> void setBean(String key , T bean) throws Exception;
+	<T> void setBean(String key, T bean) throws Exception;
 	
 	/**
 	 * 删除key
 	 * @param key
 	 * @throws Exception 
 	 */
-	<T> void delBean(String key,Class<T> claz) throws Exception;
+	<T> void delBean(String key, Class<T> claz) throws Exception;
 }

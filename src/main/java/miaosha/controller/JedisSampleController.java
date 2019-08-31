@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import miaosha.dao.domain.User;
+import miaosha.redis.key.space.UserKey;
 import miaosha.redis.service.RedisService;
 import miaosha.redis.service.proxy.RedisServiceProxy;
 import miaosha.result.Result;
@@ -25,8 +26,8 @@ public class JedisSampleController {
 	@RequestMapping("/saveUserRedisProxy")
 	@ResponseBody
 	Result<String> hello() throws Exception {
-		User user = this.userService.findUserById(2);
-		RedisServiceProxy proxy = new RedisServiceProxy(redisService);
+		User user = this.userService.findUserById(2L);
+		RedisServiceProxy proxy = new RedisServiceProxy(UserKey.ID,redisService);
 		proxy.setBean("user", user);
 		User u = proxy.getBean("user", User.class);
 		return Result.sucess(JsonCom.beanToJson(u));

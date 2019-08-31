@@ -1,18 +1,10 @@
 package miaosha.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jackson.JsonComponentModule;
-import org.springframework.boot.json.JsonSimpleJsonParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.alibaba.druid.support.json.JSONUtils;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.fasterxml.jackson.databind.util.JSONWrappedObject;
 
 import miaosha.dao.domain.User;
 import miaosha.result.Result;
@@ -46,7 +38,7 @@ public class SampleController {
 	 */
 	@RequestMapping("/thymeleaf")
 	public String toHelloHtml(Model model) {
-		User user  = this.userService.findUserById(1);
+		User user  = this.userService.findUserById(1L);
 		model.addAttribute("name", user.getName());
 		return "hello" ;
 	}
@@ -58,7 +50,7 @@ public class SampleController {
 	@RequestMapping("/insert")
 	@ResponseBody
 	Result<String> insert() {
-		this.userService.insert(new User(3,"新插入数据"));
+		this.userService.insert(new User(3L,"新插入数据"));
 		return Result.sucess("插入成功 !");
 	}
 	

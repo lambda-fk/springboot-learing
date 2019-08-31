@@ -34,6 +34,30 @@ public final class Result<T> {
 		r.data = data;
 		return r;
 	}
+	
+	/**
+	 * 失败
+	 * @param data
+	 * @return
+	 */
+	public static <T> Result<T> error(int errorCode , T data) {
+		
+		Result<T> r = new Result<T>(CodeMsg.findByCode(errorCode));
+		r.data = data;
+		return r;
+	}
+	
+	/**
+	 * 绑定错误异常参数填写
+	 * @param data
+	 * @param errorArgus
+	 * @return
+	 */
+	public static <T> Result<T> errorArgs(T data , Object...errorArgus) {
+		Result<T> r = new Result<T>(CodeMsg.BIND_ERROR.fillArguments(errorArgus));
+		r.data = data;
+		return r;
+	}
 
 	private Result(T data) {
 		this.data = data;
