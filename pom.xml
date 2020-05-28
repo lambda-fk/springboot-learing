@@ -5,7 +5,7 @@
 
 	<groupId>miaosha</groupId>
 	<artifactId>miaosha1</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>dev1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>miaosha1</name>
